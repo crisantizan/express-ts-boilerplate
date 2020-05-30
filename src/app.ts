@@ -34,9 +34,6 @@ if (inDevelopment) {
 // transform responses
 app.use(transformResponsePipe); // comment this if you don't use it
 
-// global error handler
-app.use(globalErrorHandlerMiddleware);
-
 /** -------------------- ROUTER -------------------- */
 
 // redirect from root to /api
@@ -52,6 +49,9 @@ app.get('/api', (_, res) => {
 
 // set global prefix and use all routes
 app.use('/api', router);
+
+// global error handler
+app.use(globalErrorHandlerMiddleware);
 
 // not found path
 app.use('*', (_, res) => {
